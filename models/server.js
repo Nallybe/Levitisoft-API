@@ -5,10 +5,9 @@ const dbConnection = require('../database/config')
 class Server{
     constructor(){
         this.app = express()
+        
         this.port = process.env.PORT
-        this.asignacionPath = "/api/asignacion"
-        this.rolesPath = "/api/roles"
-        this.permisosPath = "/api/permisos"
+        this.encuestaPath = "/api/encuesta"
         this.middlewares()
         this.routes()
         this.dbConectar()
@@ -23,9 +22,7 @@ class Server{
     }
 
     routes(){
-        this.app.use(this.asignacionPath, require("../routes/asignacion"))
-        this.app.use(this.rolesPath, require("../routes/roles"))
-        this.app.use(this.permisosPath, require("../routes/permisos"))
+        this.app.use(this.encuestaPath, require("../routes/encuesta"))
     }
 
     listen(){
